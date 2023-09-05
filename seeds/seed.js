@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models'); 
 
 const userData = require('./userData.json');
 const postData = require('./postData.json');
+const commentData = require('./commentData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -13,10 +14,18 @@ const seedDatabase = async () => {
   });
 
   for (const post of postData) {
-    await Post.create({
+    const createdPost = await Post.create({
       ...post,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
+
+    for (const comment of commentData) {
+      await Comment.create({
+        ...comment,
+        user_id: users[Math.floor(Math.random() * users.length)].id,
+        post_id: createdPost.id,
+      });
+    }
   }
 
   process.exit(0);
