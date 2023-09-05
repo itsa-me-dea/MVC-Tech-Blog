@@ -71,6 +71,41 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
+router.get('/dashboard/edit/:id', async (req, res) => {
+  try {
+    const postData = await Post.findOne({
+      where: {
+          id: req.params.id
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+        { 
+          model: Comment,
+          attributes: ['id', 'comment_text', 'date_created', 'user_id', 'post_id'],
+          include: 
+            {
+              model: User,
+              attributes: ['name'],
+            } 
+        },
+      ],
+    });
+
+    const post = postData.get({ plain: true });
+    console.log(post);
+
+    res.render('dashboard-edit', {
+      ...post,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {

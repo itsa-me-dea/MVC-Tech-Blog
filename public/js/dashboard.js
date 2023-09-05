@@ -22,11 +22,21 @@ const newFormHandler = async (event) => {
   }
 };
 
-const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+const editButtonHandler = async (event) => {
+  if (event.target.classList.contains('btn-edit')) {
+    const postId = event.target.getAttribute('data-id');
+    
+    // Redirect to the edit page using the post ID
+    window.location.href = `/dashboard/edit/${postId}`;
+  }
+};
 
-    const response = await fetch(`/api/posts/${id}`, {
+// Define an async function for the "DELETE" button click event
+const deleteButtonHandler = async (event) => {
+  if (event.target.classList.contains('btn-delete')) {
+    const postId = event.target.getAttribute('data-id');
+
+    const response = await fetch(`/api/posts/${postId}`, {
       method: 'DELETE',
     });
 
@@ -38,10 +48,24 @@ const delButtonHandler = async (event) => {
   }
 };
 
+// Wait for the document to be fully loaded before attaching event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  // Attach event listeners to the "EDIT" and "DELETE" buttons
+  const editButtons = document.querySelectorAll('.btn-edit');
+  const deleteButtons = document.querySelectorAll('.btn-delete');
+
+  editButtons.forEach((button) => {
+    button.addEventListener('click', editButtonHandler);
+  });
+
+  deleteButtons.forEach((button) => {
+    button.addEventListener('click', deleteButtonHandler);
+  });
+});
+
 document
   .querySelector('.new-post-form')
   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.post-list')
-  .addEventListener('click', delButtonHandler);
+
+

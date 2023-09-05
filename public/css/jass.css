@@ -1026,6 +1026,15 @@ a:hover {
   background-color: #ee8294;
 }
 
+.btn.btn-edit {
+  background-color: #4c82e6;
+  color: #ffffff;
+}
+
+.btn.btn-edit:hover {
+  background-color: #82a8ee;
+}
+
 .btn.btn-info {
   background-color: #1bbc9b;
   color: #ffffff;
