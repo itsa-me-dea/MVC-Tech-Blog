@@ -1,12 +1,12 @@
 <div class="row">
   {{!-- Greetinf for user --}}
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+    <h2 style="color: #01354d;">Welcome, {{name}}!</h2>
   </div>
 </div>
 
 <div class="row mt-4">
-  <div class="col-md-6">
+  <div class="col-md-6 dashboard-stuff">
     <h3>Create a New Post:</h3>
 
     {{!-- New post form --}}
@@ -30,15 +30,17 @@
     </form>
   </div>
 
+  <div class="col-md-1"></div>
+
   {{!-- List of posts --}}
   {{#if posts.length}}
-  <div class="col-md-6 post-list">
+  <div class="col-md-5 post-list dashboard-stuff">
     <h3>Current Posts:</h3>
 
     {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.name}}</a></h4>
+        <h4><a href="/post/{{post.id}}" style="color: #64bcca;" class="post-title">{{post.name}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-edit" data-id="{{post.id}}">EDIT</button>

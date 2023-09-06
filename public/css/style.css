@@ -1,5 +1,48 @@
-header, .post:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+* {
+  color: aliceblue;
+}
+
+body {
+  background-image: url('../assets/site-background.jpg');
+  background-repeat: no-repeat, repeat;
+  background-size: auto 100%;
+  back
+}
+
+a:hover {
+  text-decoration: none;
+  color: aliceblue !important;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+header, .post, .login-card, .signup-card, .dashboard-stuff, .post-card {
+  border-bottom: 2px solid aliceblue;
+}
+
+.site-title, h2 a {
+  color: #bae3e9;
+}
+
+.post, .login-card, .signup-card, .dashboard-stuff, .comment-card, .post-card {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.login-card, .signup-card, .dashboard-stuff, .comment-card, .post-card {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.post-card {
+  margin-bottom: 20px;
+}
+
+.post div {
+  padding-top: 10px;
+  /* margin: 5px; */
 }
 
 .no-button {
@@ -15,10 +58,4 @@ header, .post:not(:last-child) {
 .no-button:hover {
   color: #065b83;
   text-decoration: underline;
-}
-
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
 }

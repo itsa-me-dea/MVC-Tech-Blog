@@ -14,20 +14,20 @@
     <header class="display-flex justify-space-between align-center p-2">
       {{!-- header --}}
       <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Itsa Tech Blog</a>
+        <i class="fa-solid fa-comments fa-xl"></i>
+        <a class="site-title" href="/">Itsa Tech Blog</a>
       </h1>
       
       {{!-- navbar --}}
       <nav>
-        <a href="/">Home</a> |
+        <a href="/"><i class="fa-solid fa-house"></i> Home</a> |
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/dashboard">Dashboard</a> |
-        <button class="no-button" id="logout">Logout</button>
+        <a href="/dashboard"><i class="fa-solid fa-user"></i> Dashboard</a> |
+        <button class="no-button" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
         {{else}}
-        <a href="/login">Dashboard</a> |
-        <a href="/login">Login</a>
+        <a href="/login"><i class="fa-solid fa-user"></i> Dashboard</a> |
+        <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
         {{/if}}
       </nav>
     </header>
@@ -43,6 +43,7 @@
     </footer>
   </div>
 
+  <script src="https://kit.fontawesome.com/a23205ab6e.js" crossorigin="anonymous"></script>
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
