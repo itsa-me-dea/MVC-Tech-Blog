@@ -1,11 +1,11 @@
 <div class="text-center">
+  {{!-- Post info --}}
   <h2 class="post-title" post-id="{{id}}">{{name}}</h2>
-  <script>
-  console.log("ID from Handlebars:", "{{id}}");
-</script>
   <p>{{{get_emoji}}}</p>
   <p>{{description}}</p>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
+
+  {{!-- Option to create add a commment if logged in --}}
   {{#if logged_in}}
   <div class="card">
     <h4 class="card-header">Leave a Comment</h4>
@@ -18,6 +18,7 @@
   </div>
   {{/if}}
 
+  {{!-- List of comments --}}
   {{#if comments.length}}
   <div class="col-md-6 comment-list">
     <h4>Current Comments:</h4>
@@ -30,6 +31,7 @@
         </p>
         <p class="card-header">Created by {{comment.user.name}} on {{format_date comment.date_created}}</p>
       </div>
+      {{!-- Future implementation to delete comment --}}
       {{!-- {{#if logged_in}} --}}
       {{!-- <div class="col-md-4">
         <button class="btn btn-sm btn-danger btn-delete" data-id="{{comment.id}}">DELETE</button>

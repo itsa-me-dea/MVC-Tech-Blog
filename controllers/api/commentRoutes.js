@@ -59,7 +59,7 @@ try {
 }
 });
   
-// Delete comment
+// Delete comment (future implementation)
 router.delete('/:id', withAuth, async (req, res) => {
 try {
     const commentData = await Comment.destroy({

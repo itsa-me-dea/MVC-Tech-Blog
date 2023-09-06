@@ -12,10 +12,13 @@
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
+      {{!-- header --}}
       <h1>
         <span role="img" aria-label="money">💸</span>
         <a href="/">Itsa Tech Blog</a>
       </h1>
+      
+      {{!-- navbar --}}
       <nav>
         <a href="/">Home</a> |
         <!-- Conditionally render login or logout links -->
@@ -28,10 +31,13 @@
         {{/if}}
       </nav>
     </header>
+
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
+
+    {{!-- future implementation for any desired links --}}
     <footer>
       
     </footer>

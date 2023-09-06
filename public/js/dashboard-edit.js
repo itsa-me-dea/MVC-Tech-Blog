@@ -1,3 +1,5 @@
+// connected to dashboard-edit.handlebars
+// event listener to update post in response to "update" submit button
 document.addEventListener('submit', async (event) => {
   if (event.target.classList.contains('edit-post-form')) {
     event.preventDefault();

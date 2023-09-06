@@ -1,14 +1,15 @@
+// connected to dashboard.handlebars
+// event listener to add post in response to "create" submit button
 const newFormHandler = async (event) => {
   event.preventDefault();
 
   const name = document.querySelector('#post-name').value.trim();
-  // const needed_funding = document.querySelector('#post-funding').value.trim();
   const description = document.querySelector('#post-desc').value.trim();
 
-  if (name && description) { // && needed_funding
+  if (name && description) { 
     const response = await fetch(`/api/posts`, {
       method: 'POST',
-      body: JSON.stringify({ name, description }), // , needed_funding
+      body: JSON.stringify({ name, description }), 
       headers: {
         'Content-Type': 'application/json',
       },
@@ -22,6 +23,7 @@ const newFormHandler = async (event) => {
   }
 };
 
+// response to "edit" button to navigate to selected post to edit
 const editButtonHandler = async (event) => {
   if (event.target.classList.contains('btn-edit')) {
     const postId = event.target.getAttribute('data-id');
@@ -31,7 +33,7 @@ const editButtonHandler = async (event) => {
   }
 };
 
-// Define an async function for the "DELETE" button click event
+// response to "delete" button to delete selected post
 const deleteButtonHandler = async (event) => {
   if (event.target.classList.contains('btn-delete')) {
     const postId = event.target.getAttribute('data-id');

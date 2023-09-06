@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+// get all posts
 router.get('/', async (req, res) => {
   try {
     // Get all posts and JOIN with user data
@@ -36,6 +37,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// get single post
 router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findOne({
@@ -71,6 +73,7 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
+// get single post to edit
 router.get('/dashboard/edit/:id', async (req, res) => {
   try {
     const postData = await Post.findOne({
