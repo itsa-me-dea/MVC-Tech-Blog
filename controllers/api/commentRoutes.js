@@ -4,20 +4,31 @@ const withAuth = require('../../utils/auth');
 
 // Create comment
 router.post('/', withAuth, async (req, res) => {
-    try {
-      const newComment = await Comment.create({
-        // comment_text: req.body.comment_text,
-        ...req.body,
-        user_id: req.session.user_id,
-        post_id: req.session.post_id,
-      });
-  
-      res.status(201).json(newComment);
-    } catch (err) {
-      res.status(400).json(err);
+  try {
+    const { comment, post_id } = req.body;
+
+    if (!comment || !post_id) {
+      return res.status(400).json({ message: 'Comment and post_id are required.' });
     }
-  });
-  
+
+    const newComment = await Comment.create({
+      comment_text: comment,
+      user_id: req.session.user_id,
+      post_id,
+    });
+
+    if (!newComment) {
+      return res.status(500).json({ message: 'Failed to create the comment.' });
+    }
+
+    res.status(201).json(newComment);
+  } catch (err) {
+    console.error(err); // Log any errors to the console
+    res.status(500).json(err);
+  }
+});
+
+
 // Get all comments
 router.get('/:post_id', async (req, res) => {
 try {

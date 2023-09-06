@@ -17,7 +17,7 @@ document.addEventListener('submit', async (event) => {
       });
 
       if (response.ok) {
-        document.location.replace(`/dashboard/edit/${id}`);
+        document.location.replace(`/dashboard/`);
         alert('Post updated');
       } else {
         alert('Failed to update post');
